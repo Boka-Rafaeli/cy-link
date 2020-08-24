@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Benyamin-Rafaeli/cy-link/issues"
   },
-  "homepage": "https://github.com/Benyamin-Rafaeli/cy-link#readme"
+  "homepage": "https://github.com/Benyamin-Rafaeli/cy-link#readme",
+  "dependencies": {
+    "cypress": "^5.0.0"
+  }
 }
