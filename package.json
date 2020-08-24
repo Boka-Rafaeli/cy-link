@@ -1,0 +1,23 @@
+{
+  "name": "cy-link",
+  "version": "1.0.0",
+  "description": "linkedin",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benyamin-Rafaeli/cy-link.git"
+  },
+  "keywords": [
+    "build",
+    "connections"
+  ],
+  "author": "Benyamin Rafaeli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benyamin-Rafaeli/cy-link/issues"
+  },
+  "homepage": "https://github.com/Benyamin-Rafaeli/cy-link#readme"
+}
