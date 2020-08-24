@@ -10,10 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/Benyamin-Rafaeli/cy-link.git"
   },
-  "keywords": [
-    "build",
-    "connections"
-  ],
   "author": "Benyamin Rafaeli",
   "license": "ISC",
   "bugs": {

@@ -1,1 +1,14 @@
-{}
+{
+  "baseUrl": "https://www.linkedin.com",
+  "viewportWidth": 1200,
+  "viewportHeight": 900,
+  "video": false,
+  "videosFolder": "cypress/videos",
+  "screenshotsFolder": "cypress/screenshots",
+  "defaultCommandTimeout": 60000,
+  "pageLoadTimeout": 1000000,
+  "retries": {
+    "runMode": 1,
+    "openMode": 0
+  }
+}
