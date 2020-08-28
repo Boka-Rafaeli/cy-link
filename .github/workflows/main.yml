@@ -13,5 +13,6 @@ jobs:
           $(npm bin)/cypress verify
       - name: Run Cypress tests
 #        run: npm run test:chrome
-        run: npm run -s cypress:run -- -e username=$LINKEDIN_PASS,password=$LINKEDIN_USER
+#        run: npm run -s cypress:run -- -e username=$LINKEDIN_PASS,password=$LINKEDIN_USER
+        run: npm run -s cypress:chrome -- -e username=mekadem11@gmail.com,password=Xmh6i4ps4odgjZ
         continue-on-error: true
