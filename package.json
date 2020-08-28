@@ -4,7 +4,7 @@
   "description": "linkedin",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open"
+    "test:chrome": "cypress run --browser chrome"
   },
   "repository": {
     "type": "git",
