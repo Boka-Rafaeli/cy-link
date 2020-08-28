@@ -2,9 +2,12 @@
   "name": "cy-link",
   "version": "1.0.0",
   "description": "linkedin",
-  "main": "index.js",
   "scripts": {
-    "test:chrome": "cypress run --browser chrome"
+    "cypress:chrome": "cypress run --browser chrome",
+    "cypress:open": "cypress open",
+    "cypress:verify": "cypress verify",
+    "cypress:run": "cypress run",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -12,10 +15,6 @@
   },
   "author": "Benyamin Rafaeli",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Benyamin-Rafaeli/cy-link/issues"
-  },
-  "homepage": "https://github.com/Benyamin-Rafaeli/cy-link#readme",
   "dependencies": {
     "cypress": "^5.0.0"
   }

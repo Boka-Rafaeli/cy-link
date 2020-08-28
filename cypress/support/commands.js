@@ -1,8 +1,39 @@
 Cypress.Commands.add('performLogin', (user) => {
     cy.visit('login', {})
-    cy.get('#username').focus().type(user.email, {delay: 10, log: false})
-    cy.get('#password').focus().type(user.password, {delay: 10, log: false})
+
+    cy.get('#username')
+        .focus()
+        .clear()
+        .type(user.email, {delay: 10, log: false})
+
+    cy.get('#password')
+        .focus()
+        .clear()
+        .type(user.password, {delay: 10, log: false})
+
     cy.get('.btn__primary--large').click()
+
+    cy.url().should('include', 'feed')
+})
+
+Cypress.Commands.add('performLoginCLI', () => {
+    cy.visit('login')
+
+    const username = Cypress.env('username')
+    const password = Cypress.env('password')
+
+    cy.log(`username => ${username}`)
+    cy.get('#username')
+        .focus()
+        .type(username, {delay: 50, log: true})
+
+    cy.log(`password => ${password}`)
+    cy.get('#password')
+        .focus()
+        .type(password, {delay: 50, log: true})
+
+    cy.get('.btn__primary--large').click()
+
     cy.url().should('include', 'feed')
 })
 

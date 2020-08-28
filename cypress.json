@@ -9,6 +9,6 @@
   "pageLoadTimeout": 1000000,
   "retries": {
     "runMode": 1,
-    "openMode": 0
+    "openMode": 1
   }
 }

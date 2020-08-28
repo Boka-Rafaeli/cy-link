@@ -1,22 +1,3 @@
-# name: End-to-end tests
-# on: [push]
-# jobs:
-#   cypress-run:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v1
-
-#       - name: Cypress run
-#         uses: cypress-io/github-action@v1
-#         with:
-#           build: npm run build
-#           start: npm test
-#           wait-on: http://localhost:3030
-
-
-# This is a basic workflow to help you get started with Actions
-
 name: End-to-end tests
 on: [ push ]
 jobs:
@@ -24,22 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: Cypress run
-#        run: npm test
-
-      - name: Install a project with a clean slate
+      - name: Install a project and cypress with a clean slate
         run: |
           npm ci
           $(npm bin)/cypress cache path
           $(npm bin)/cypress cache list
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run test:chrome
+#        run: npm run test:chrome
+        run: npm run -s cypress:run -- -e username=$LINKEDIN_PASS,password=$LINKEDIN_USER
         continue-on-error: true
-
-#      # Runs a set of commands using the runners shell
-#      - name: Run a multi-line script
-#        run: |
-#          echo Add other actions to build,
-#          echo test, and deploy your project.
-#          start: npm test

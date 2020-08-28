@@ -2,7 +2,7 @@
 
 context('LinkedIn', () => {
 
-    it('HR discovering', () => {
+    xit('HR discovering', () => {
         cy.fixture('credentials.json').as('user')
         cy.get('@user').then(user => cy.performLogin(user))
         cy.navigateToNetwork()
@@ -17,8 +17,11 @@ context('LinkedIn', () => {
     })
 
     it.only('Sending request', () => {
-        cy.fixture('credentials.json').as('user')
-        cy.get('@user').then(user => cy.performLogin(user))
+
+        // cy.fixture('credentials.json').as('user')
+        // cy.get('@user').then(user => cy.performLogin(user))
+
+        cy.performLoginCLI()
 
         // cy.fixture('hr_0.json').as('target')
         // cy.get('@target').then(users => cy.log(`There are ${users.length} hrs.`))
@@ -36,7 +39,7 @@ context('LinkedIn', () => {
 
     })
 
-    it('fake login', () => {
+    xit('fake login', () => {
         Cypress.config('baseUrl', '')
         cy.visit('cypress/fake/test.html') // {failOnStatusCode: false}
         cy.get('.ph5.pb5').then(el => {
