@@ -12,6 +12,5 @@ jobs:
           $(npm bin)/cypress cache list
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-#        run: npm run test:chrome
-        run: npm run -s cypress:run -- -e username=$TESTUSERNAME,password=$TESTPASSWORD
+        run: npm run -s cypress:run -- -e username=${{ secrets.TESTUSERNAME }},password=${{ secrets.TESTPASSWORD }}
         continue-on-error: true
