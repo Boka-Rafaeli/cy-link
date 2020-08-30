@@ -6,8 +6,7 @@
     "cypress:chrome": "cypress run --browser chrome",
     "cypress:open": "cypress open",
     "cypress:verify": "cypress verify",
-    "cypress:run": "cypress run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:run": "cypress run && TZ=UTC cypress run"
   },
   "repository": {
     "type": "git",
@@ -15,7 +14,8 @@
   },
   "author": "Benyamin Rafaeli",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "cypress": "^5.0.0"
   }
 }
+

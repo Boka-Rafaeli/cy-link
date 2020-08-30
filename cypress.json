@@ -8,7 +8,7 @@
   "defaultCommandTimeout": 60000,
   "pageLoadTimeout": 1000000,
   "retries": {
-    "runMode": 1,
-    "openMode": 1
+    "runMode": 0,
+    "openMode": 0
   }
 }
