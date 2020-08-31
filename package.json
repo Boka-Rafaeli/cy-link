@@ -6,7 +6,7 @@
     "cypress:chrome": "cypress run --browser chrome",
     "cypress:open": "cypress open",
     "cypress:verify": "cypress verify",
-    "cypress:run": "cypress run && TZ=UTC cypress run"
+    "cypress:run": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -18,4 +18,3 @@
     "cypress": "^5.0.0"
   }
 }
-

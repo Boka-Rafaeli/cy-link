@@ -6,7 +6,7 @@ context('LinkedIn', () => {
         cy.performLoginCLI()
         cy.navigateToNetwork()
 
-        const cycle = 25
+        const cycle = 100
         Cypress._.times(cycle, (i) => {
             cy.scrollDownTimes(2)
             cy.collectHR()
@@ -16,7 +16,7 @@ context('LinkedIn', () => {
         // cy.collectHR(10)
     })
 
-    it('Sending request', () => {
+    xit('Sending request', () => {
         cy.performLoginCLI()
         cy.sendRequest('hr_0.json')
     })
@@ -24,6 +24,7 @@ context('LinkedIn', () => {
     xit('fake login', () => {
         Cypress.config('baseUrl', '')
         cy.visit('cypress/fake/test.html') // {failOnStatusCode: false}
+
 
         cy.collectHR(25)
 

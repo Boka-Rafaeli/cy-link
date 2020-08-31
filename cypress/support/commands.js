@@ -59,7 +59,14 @@ Cypress.Commands.add('collectHR', (contactsNumber) => {
 
                 results.push({href: personHref})
                 cy.log(`👆👆👆 => ${count} 👆👆👆 => ${personHref}`)
-                cy.createFile(name, results)
+                // cy.createFile(name, results)
+
+                if (count === 25) {
+                    cy.createFile(name, results)
+                    count = 0
+                    results = []
+                    name = name + 1
+                }
 
                 // if (count > contactsNumber) {
                 //     cy.createFile(name, results)
