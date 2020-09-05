@@ -26,16 +26,26 @@ Cypress.Commands.add('scrollDownTimes', (scrollDownTimes) => {
     scrollDownTimes = typeof scrollDownTimes === "number" && scrollDownTimes > 0 ? scrollDownTimes : 1
     let timer
     Cypress._.times(scrollDownTimes, (i) => {
-        timer = Math.floor(Math.random() * 999 + 3000)
+        timer = Math.floor(Math.random() * 999 + 2000)
         cy.log(`💥💥💥💥💥 times => ${i + 1} from => ${scrollDownTimes}`)
         cy.get('#type-ahead-wormhole').scrollIntoView({duration: timer})
-        cy.log(`wait for ${timer}`)
         cy.wait(timer)
     })
 })
 
-Cypress.Commands.add('collectHR', (contactsNumber) => {
-    let personName, personPosition, personHref, count = 0, name = 0, results = []
+Cypress.Commands.add('count', () => {
+    cy.get('.discover-entity-type-card__info-container')
+        .then(el => {
+            cy.log(`count: ${el.length}`)
+            cy.log(`person: ${el.get(el.length - 1)}`)
+            console.log(el.get(8))
+            console.log(el.get(9))
+            console.log(el.get(10))
+        })
+})
+
+Cypress.Commands.add('collectHR', (found) => {
+    let personName, personPosition, personHref, count = 0, hr_arr = [], all_arr = []
     cy
         .get('.discover-entity-type-card__info-container')
         .each(element => {
@@ -53,34 +63,34 @@ Cypress.Commands.add('collectHR', (contactsNumber) => {
 
             if (personPosition.includes('HR') || personPosition.includes('Acquisition') || personPosition.includes('Human Resources')) {
                 count++
-                // cy.log(`name => ${personName}`)
-                // cy.log(`position => ${personPosition}`)
-                // results.push({name: personName, position: personPosition, href: personHref})
 
-                results.push({href: personHref})
-                cy.log(`👆👆👆 => ${count} 👆👆👆 => ${personHref}`)
-                // cy.createFile(name, results)
-
-                if (count === 25) {
-                    cy.createFile(name, results)
-                    count = 0
-                    results = []
-                    name = name + 1
+                if (count > found) {
+                    hr_arr.push({name: personName, position: personPosition, href: personHref})
+                    cy.log(`👆👆👆 => ${count} ${personName}`)
                 }
-
-                // if (count > contactsNumber) {
-                //     cy.createFile(name, results)
-                //     count = 0
-                //     results = []
-                //     name = name + 1
-                // }
             }
+            all_arr.push({name: personName, position: personPosition, href: personHref})
         })
+
+    try {
+        cy.log('========= hr_arr =========')
+        cy.log(hr_arr)
+        cy.log('========= all_arr =========')
+        cy.log(all_arr)
+
+        cy.createFile('hr_arr', hr_arr)
+        cy.createFile('all_arr', all_arr)
+    } finally {
+        cy.createFile('hr_arr', hr_arr)
+        // cy.createFile('all_arr', all_arr)
+    }
+
 })
 
 Cypress.Commands.add('createFile', (name, results) => {
-    cy.log(`👺👺👺👺👺 => createFile hr_${name}.json`)
-    cy.writeFile(`cypress/fixtures/hr_${name}.json`, results)
+    cy.log(`👺👺👺👺👺 => Try createFile ${name.toUpperCase()}`)
+    cy.writeFile(`cypress/fixtures/${name}.json`, results)
+    cy.log(`🐶🐶🐶🐶🐶 => Done createFile ${name.toUpperCase()}`)
 })
 
 Cypress.Commands.add('sendRequest', (f) => {
@@ -106,7 +116,7 @@ Cypress.Commands.add('sendRequest', (f) => {
     // })
 
     cy.get('@target').each(target => {
-        cy.log(`🕸️🕸️🕸️️🕸️🥂 => ${target.href}`)
+        cy.log(`🐶🐶🐶🐶🐶 => ${target.href}`)
         cy.visit(`${target.href}`)
 
 
@@ -119,7 +129,7 @@ Cypress.Commands.add('sendRequest', (f) => {
             }
         })
 
-        cy.log(`🐶🐶🐶🐶🐶 => ${target.length}`)
+        // cy.log(`🐶🐶🐶🐶🐶 => ${target.length}`)
     })
 
     // cy.get('@target').each(target => {
@@ -140,3 +150,23 @@ Cypress.Commands.add('sendRequest', (f) => {
     // })
 })
 
+Cypress.Commands.add('removeDup', () => {
+
+    function getUniqueArray(arr = [], compareProps = []) {
+        let modifiedArray = [];
+        if (compareProps.length === 0 && arr.length > 0)
+            compareProps.push(...Object.keys(arr[0]));
+        arr.map(item => {
+            if (modifiedArray.length === 0) {
+                modifiedArray.push(item);
+            } else {
+                if (!modifiedArray.some(item2 =>
+                    compareProps.every(eachProps => item2[eachProps] === item[eachProps])
+                )) {
+                    modifiedArray.push(item);
+                }
+            }
+        });
+        return modifiedArray;
+    }
+})
