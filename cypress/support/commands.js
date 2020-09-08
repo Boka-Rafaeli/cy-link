@@ -170,3 +170,12 @@ Cypress.Commands.add('removeDup', () => {
         return modifiedArray;
     }
 })
+
+// console.log(JSON.stringify(getUniqueArray(a)))
+
+
+Cypress.Commands.add('navigateToFilteredNetwork', (num) => {
+    cy.visit(`search/results/people/?facetGeoUrn=["101620260"]&facetIndustry=["137"]&facetNetwork=["F"]&origin=FACETED_SEARCH&page=${num}`)
+    // cy.url().should('include', 'mynetwork')
+    // https://www.linkedin.com/search/results/people/?facetGeoUrn=["101620260"]&facetIndustry=["137"]&facetNetwork=["F"]&origin=FACETED_SEARCH
+})
