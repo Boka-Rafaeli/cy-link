@@ -18,9 +18,9 @@ context('LinkedIn', () => {
         // })
     })
 
-    xit('Sending request', () => {
+    it('Sending request', () => {
         cy.performLoginCLI()
-        cy.sendRequest('todo.json')
+        cy.sendRequest('hr_arr_00-25_clean.json')
     })
 
     xit('fake login', () => {
@@ -53,17 +53,19 @@ context('LinkedIn', () => {
     })
 
 
-    it('try from my network', () => {
+    xit('try from my network', () => {
         cy.performLoginCLI()
         // cy.navigateToFilteredNetwork()
         // Cypress.config('baseUrl', '')
         // cy.visit('cypress/fake/filteredNetwork.html')
 
-        let hr_arr = [], timer, pagination = 25
+        let hr_arr = [], timer, pagination = 25, nav
 
         Cypress._.times(pagination, (i) => {
             timer = Math.floor(Math.random() * 999 + 2000)
-            cy.navigateToFilteredNetwork(i + 1)
+            nav = 50 + i
+            cy.log(`navigate to => ${nav}`)
+            cy.navigateToFilteredNetwork(nav)
             cy.get('#type-ahead-wormhole').scrollIntoView({duration: timer})
             cy.log(`🐍🐍🐍🐍🐍 page: ${i + 1} from: ${pagination}`)
             cy.get('.search-result__result-link').each(el => hr_arr.push({href: el.get(0).pathname}))

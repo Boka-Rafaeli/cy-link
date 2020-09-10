@@ -127,6 +127,15 @@ Cypress.Commands.add('sendRequest', (f) => {
                 cy.contains('Done').click()
                 cy.log(`🥂🥂🥂🥂🥂 => Connect`)
             }
+
+            // cy.get('label')
+            // if (myElement.text().includes('Add a note')) {
+            //     // myElement.trigger('click')
+            //     // cy.contains('Done').click()
+            //     cy.get('.artdeco-modal__dismiss').click({force: true})
+            //     cy.log(`🥂🥂🥂🥂🥂 => CLOSE`)
+            // }
+
         })
 
         // cy.log(`🐶🐶🐶🐶🐶 => ${target.length}`)
