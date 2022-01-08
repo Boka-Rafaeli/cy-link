@@ -15,6 +15,6 @@
   "author": "Benyamin Rafaeli",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^5.1.0"
+    "cypress": "^9.2.0"
   }
 }
